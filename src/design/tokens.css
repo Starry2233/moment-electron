@@ -1,0 +1,138 @@
+/* ===== MIUI Design Tokens ===== */
+
+:root {
+  /* ── Colors ── */
+  --mi-orange: #FF6900;
+  --mi-orange-light: #FF8C3A;
+  --mi-orange-dark: #E55D00;
+
+  --mi-bg: #F5F5F5;
+  --mi-bg-dark: #1A1A1A;
+  --mi-card: #FFFFFF;
+  --mi-card-dark: #2A2A2A;
+
+  --mi-text-primary: #1A1A1A;
+  --mi-text-secondary: #8C8C8C;
+  --mi-text-tertiary: #BFBFBF;
+  --mi-text-inverse: #FFFFFF;
+
+  --mi-border: #F0F0F0;
+  --mi-border-dark: #333333;
+  --mi-divider: #EBEBEB;
+
+  --mi-blue: #0A84FF;
+  --mi-green: #34C759;
+  --mi-red: #FF3B30;
+
+  /* ── Frosted Glass ── */
+  --mi-frost: rgba(255, 255, 255, 0.75);
+  --mi-frost-heavy: rgba(255, 255, 255, 0.92);
+  --mi-frost-dark: rgba(30, 30, 30, 0.8);
+  --mi-frost-heavy-dark: rgba(40, 40, 40, 0.92);
+
+  /* ── Spacing ── */
+  --mi-space-xs: 4px;
+  --mi-space-sm: 8px;
+  --mi-space-md: 12px;
+  --mi-space-lg: 16px;
+  --mi-space-xl: 24px;
+  --mi-space-2xl: 32px;
+
+  /* ── Radius ── */
+  --mi-radius-sm: 8px;
+  --mi-radius-md: 12px;
+  --mi-radius-lg: 16px;
+  --mi-radius-xl: 20px;
+  --mi-radius-full: 9999px;
+
+  /* ── Shadow ── */
+  --mi-shadow-sm: 0 1px 3px rgba(0,0,0,0.04);
+  --mi-shadow-md: 0 2px 8px rgba(0,0,0,0.06);
+  --mi-shadow-lg: 0 4px 20px rgba(0,0,0,0.08);
+  --mi-shadow-xl: 0 8px 32px rgba(0,0,0,0.12);
+
+  /* ── Typography ── */
+  --mi-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Noto Sans SC", "Microsoft YaHei", sans-serif;
+  --mi-font-mono: "SF Mono", "Cascadia Code", "Consolas", monospace;
+
+  --mi-text-xs: 11px;
+  --mi-text-sm: 13px;
+  --mi-text-base: 15px;
+  --mi-text-lg: 17px;
+  --mi-text-xl: 20px;
+  --mi-text-2xl: 24px;
+
+  --mi-leading-tight: 1.3;
+  --mi-leading-normal: 1.5;
+  --mi-leading-relaxed: 1.7;
+
+  /* ── Transitions ── */
+  --mi-ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --mi-duration: 0.35s;
+}
+
+/* ── Global Styles ── */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: var(--mi-font);
+  font-size: var(--mi-text-base);
+  line-height: var(--mi-leading-normal);
+  color: var(--mi-text-primary);
+  background: var(--mi-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+#root {
+  height: 100%;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.15);
+  border-radius: var(--mi-radius-full);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,0.25);
+}
+
+/* ── Utilities ── */
+.miui-blur {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.miui-card {
+  background: var(--mi-card);
+  border-radius: var(--mi-radius-lg);
+  box-shadow: var(--mi-shadow-sm);
+}
+
+.miui-clickable {
+  cursor: pointer;
+  transition: all var(--mi-duration) var(--mi-ease);
+}
+.miui-clickable:hover {
+  background: rgba(0,0,0,0.02);
+}
+.miui-clickable:active {
+  transform: scale(0.97);
+}

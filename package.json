@@ -1,0 +1,58 @@
+{
+  "name": "moment-electron",
+  "version": "1.0.0",
+  "description": "MIUI 风格的好友圈桌面客户端",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev:renderer": "vite",
+    "dev:electron": "node -e \"const { spawn } = require('child_process'); const s = spawn('npx', ['wait-on', 'http://localhost:5173'], { stdio: 'inherit', shell: true }); s.on('exit', () => { spawn('npx', ['electron', '.'], { stdio: 'inherit', shell: true }); });\"",
+    "dev": "concurrently -k \"npm run dev:renderer\" \"npm run dev:electron\"",
+    "build": "vite build",
+    "build:backend": "cd backend && pip install -r requirements.txt && python -m nuitka --standalone --onefile --windows-console-mode=disable --clang --output-dir=../dist-backend main.py",
+    "dist": "npm run build && npm run build:backend && npx electron-builder --win"
+  },
+  "dependencies": {
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "concurrently": "^9.1.2",
+    "electron": "^35.1.2",
+    "electron-builder": "^26.0.12",
+    "lucide-react": "^0.487.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.2",
+    "wait-on": "^8.0.3"
+  },
+  "build": {
+    "appId": "com.xtc.moment-electron",
+    "productName": "好友圈",
+    "directories": {
+      "app": ".",
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*",
+      "package.json",
+      "!backend/**/*"
+    ],
+    "extraResources": [
+      {
+        "from": "dist-backend/main.exe",
+        "to": "backend/main.exe"
+      }
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": null
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
